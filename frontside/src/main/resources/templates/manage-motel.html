@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{includes/main-layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý khu trọ</title>
+</head>
+<body class="page-sub-page page-submission-success" id="page-top">
+<div layout:fragment="page-content">
+    <!-- Page Content -->
+    <div id="page-content">
+
+        <!-- Breadcrumb -->
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="#">Trang chủ</a></li>
+                <li class="active">Quản lý khu trọ</li>
+            </ol>
+        </div>
+        <!-- end Breadcrumb -->
+
+        <div class="container">
+            <header>
+                <h1>Quản lý khu trọ</h1>
+            </header>
+            <div class="row" style="margin-bottom: 10px;">
+
+                <div class="col-md-12">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="khutro-tab" data-toggle="tab" href="#khutro" role="tab"
+                               aria-controls="home" aria-selected="true">Khu trọ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="phongtro-tab" data-toggle="tab" href="#phongtro" role="tab"
+                               aria-controls="profile" aria-selected="false">Phòng trọ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="khachtro-tab" data-toggle="tab" href="#khachtro" role="tab"
+                               aria-controls="messages" aria-selected="false">Khách trọ</a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <!--Begin Khu tro-->
+                        <div class="tab-pane active" id="khutro" role="tabpanel" aria-labelledby="khutro-tab">
+                            <div class="row" style="padding-top: 15px;">
+                                <div class="col-md-2 col-md-offset-10">
+                                    <div class="center">
+                                        <form role="form" th:action="@{/createMotel}">
+
+                                            <div class="form-group" style="float: right;">
+                                                <button type="submit" class="btn btn-default">Thêm mới khu trọ</button>
+                                            </div><!-- /.form-group -->
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="my-properties">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>Tên khu trọ</th>
+                                                    <th></th>
+                                                    <th>Ngày tạo</th>
+                                                    <th>Thao tác</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td class="image">
+                                                        <a th:href="@{/property-detail}"><img alt=""
+                                                                                              src="assets/img/properties/property-04.jpg"></a>
+                                                    </td>
+                                                    <td>
+                                                        <div class="inner">
+                                                            <a th:href="@{/property-detail}"><h2>Nhà trọ Nguyễn Thế</h2>
+                                                            </a>
+                                                            <figure>Quận Ninh Kiều, TP.Cần Thơ</figure>
+                                                        </div>
+                                                    </td>
+                                                    <td>20.05.2019</td>
+                                                    <td class="actions">
+                                                        <a href="#" class="edit"><i class="fa fa-pencil"></i>Sửa</a>
+                                                        <a href="#"><i class="delete fa fa-trash-o"></i></a>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!-- /.table-responsive -->
+                                        <!-- Pagination -->
+                                        <div class="center">
+                                            <ul class="pagination">
+                                                <li class="active"><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#">5</a></li>
+                                            </ul><!-- /.pagination-->
+                                        </div><!-- /.center-->
+                                    </div><!-- /.my-properties -->
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--End Khu tro-->
+
+                        <!--Begin Phong tro-->
+                        <div class="tab-pane" id="phongtro" role="tabpanel" aria-labelledby="phongtro-tab">
+
+                            <div class="row" style="padding-top: 15px;">
+                                <div class="col-md-2">
+
+                                    <div class="form-group">
+                                        <select name="news-type" id="chonkhutro" style="display: none;">
+                                            <option value="">Chọn khu trọ</option>
+                                            <option value="1">Nhà trọ Nguyễn Thế</option>
+                                            <option value="2">Nhà trọ Bà Ba</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-2 col-md-offset-8">
+                                    <div class="form-group" style="float: right;">
+                                        <button type="button" class="btn btn-default" data-toggle="modal"
+                                                data-target="#myModal">Thêm mới phòng trọ
+                                        </button>
+                                    </div><!-- /.form-group -->
+
+                                    <!-- The Modal -->
+                                    <div class="modal fade" id="myModal">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h2 class="modal-title">Thêm mới phòng trọ</h2>
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-8">
+
+                                                                <div class="form-group">
+                                                                    <label for="tenkhachtro">Tên phòng</label>
+                                                                    <input type="text" class="form-control"
+                                                                           id="tenkhachtro" name="tenphongtro"
+                                                                           required>
+                                                                </div><!-- /.form-group -->
+
+                                                            </div>
+                                                            <div class="col-md-4">
+
+                                                                <div class="form-group">
+                                                                    <label for="dientichphong">Diện tích</label>
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control"
+                                                                               id="dientichphong" name="dientichphong"
+                                                                               pattern="\d*" required="">
+                                                                        <span class="input-group-addon">m<sup>2</sup></span>
+                                                                    </div>
+                                                                </div><!-- /.form-group -->
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+
+                                                                <div class="form-group">
+                                                                    <label for="submit-giathang">Giá tháng</label>
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control"
+                                                                               id="submit-giathang"
+                                                                               name="sb-giathang" pattern="\d*"
+                                                                               required="">
+                                                                        <span class="input-group-addon">VNĐ</span>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="col-md-4">
+
+                                                                <div class="form-group">
+                                                                    <label for="submit-songuoiotoida">Giá ngày</label>
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control"
+                                                                               id="submit-songuoiotoida"
+                                                                               name="sb-giangay" pattern="\d*"
+                                                                               required="">
+                                                                        <span class="input-group-addon">VNĐ</span>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="col-md-4">
+
+                                                                <div class="form-group">
+                                                                    <label for="input-gac">Gác</label>
+                                                                    <select name="type" id="input-gac"
+                                                                            style="display: none;">
+                                                                        <option value="">Phòng có gác lửng hay không?
+                                                                        </option>
+                                                                        <option value="1">Có</option>
+                                                                        <option value="2">Không</option>
+                                                                    </select>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="submit-songuoiotoida">Số người ở tối
+                                                                        đa</label>
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control"
+                                                                               id="submit-songuoiohientai"
+                                                                               name="sb-songuoiotoida" pattern="\d*"
+                                                                               required="">
+                                                                        <span class="input-group-addon">Người</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="submit-songuoiohientai">Số người ở hiện
+                                                                        tại</label>
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control"
+                                                                               id="submit-giangay"
+                                                                               name="sb-songuoiohientai" pattern="\d*"
+                                                                               required="">
+                                                                        <span class="input-group-addon">Người</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="input-gac">Nhà vệ sinh</label>
+                                                                    <select name="type" id="input-nhavesinh"
+                                                                            style="display: none;">
+                                                                        <option value="1">Chung</option>
+                                                                        <option value="2">Riêng</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--End container-fluid-->
+
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                                        Hủy
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary">Lưu</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="my-properties">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>Tên phòng trọ</th>
+                                                    <th>Giá tháng</th>
+                                                    <th>Giá ngày</th>
+                                                    <th>Nhà vệ sinh</th>
+                                                    <th>Số người tối đa</th>
+                                                    <th>Số người đang ở</th>
+                                                    <th>Thao tác</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="inner">
+                                                            <a th:href="@{/property-detail}"><h2>Phòng 01</h2>
+                                                            </a>
+                                                            <b>Diện tích: </b> 30 m<sup>2</sup>
+                                                            <br>
+                                                            <b>Gác: </b> Có
+
+                                                        </div>
+                                                    </td>
+                                                    <td>1.000.000 VNĐ</td>
+                                                    <td>100.000 VNĐ</td>
+                                                    <td>Chung</td>
+                                                    <td>3</td>
+                                                    <td>0</td>
+                                                    <td class="actions">
+                                                        <a href="#" class="edit"><i class="fa fa-pencil"></i>Sửa</a>
+                                                        <a href="#"><i class="delete fa fa-trash-o"></i></a>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!-- /.table-responsive -->
+                                        <!-- Pagination -->
+                                        <div class="center">
+                                            <ul class="pagination">
+                                                <li class="active"><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#">5</a></li>
+                                            </ul><!-- /.pagination-->
+                                        </div><!-- /.center-->
+                                    </div><!-- /.my-properties -->
+
+                                </div>
+                                <!--End table of phong tro-->
+                            </div>
+                        </div>
+                        <!--End Phong tro-->
+
+                        <!--Begin Khach tro-->
+                        <div class="tab-pane" id="khachtro" role="tabpanel" aria-labelledby="khachtro-tab">
+
+                            <div class="row" style="padding-top: 15px;">
+                                <div class="col-md-2">
+
+                                    <div class="form-group">
+                                        <select name="news-type" id="chonkhutro-tabkhachtro" style="display: none;">
+                                            <option value="">Chọn khu trọ</option>
+                                            <option value="1">Nhà trọ Nguyễn Thế</option>
+                                            <option value="2">Nhà trọ Bà Ba</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-2">
+
+                                    <div class="form-group">
+                                        <select name="news-type" id="chonphongtro-tabkhachtro" style="display: none;">
+                                            <option value="">Chọn phòng trọ</option>
+                                            <option value="1">Phòng 1</option>
+                                            <option value="2">Phòng 2</option>
+                                            <option value="3">Phòng 3</option>
+                                            <option value="4">Phòng 4</option>
+                                            <option value="5">Phòng 5</option>
+                                            <option value="6">Phòng 6</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-2 col-md-offset-6">
+                                    <div class="form-group" style="float: right;">
+                                        <button type="button" class="btn btn-default" data-toggle="modal"
+                                                data-target="#myModal-tabkhachtro">Thêm mới khách trọ
+                                        </button>
+                                    </div><!-- /.form-group -->
+
+                                    <!-- The Modal -->
+                                    <div class="modal fade" id="myModal-tabkhachtro">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h2 class="modal-title">Thêm mới khách trọ</h2>
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+
+                                                                <div class="form-group">
+                                                                    <label for="tenkhachtro-modal">Tên khách trọ</label>
+                                                                    <input type="text" class="form-control"
+                                                                           id="tenkhachtro-modal"
+                                                                           name="tenkhachtro-modal"
+                                                                           required>
+                                                                </div><!-- /.form-group -->
+                                                            </div>
+                                                            <div class="col-md-12">
+
+                                                                <div class="form-group">
+                                                                    <label for="cmndcccd-modal">CMND/CCCD</label>
+                                                                    <input type="text" class="form-control"
+                                                                           id="cmndcccd-modal" name="cmndcccd-modal"
+                                                                           required>
+                                                                </div><!-- /.form-group -->
+                                                            </div>
+                                                            <div class="col-md-12">
+
+                                                                <div class="form-group">
+                                                                    <label for="quequan-modal">Quê quán</label>
+                                                                    <select name="news-type" id="quequan-modal"
+                                                                            style="display: none;">
+                                                                        <option value="">Chọn quê quán</option>
+                                                                        <option value="1">Cần Thơ</option>
+                                                                        <option value="2">Sóc Trăng</option>
+                                                                        <option value="3">Vĩnh Long</option>
+                                                                        <option value="4">An Giang</option>
+                                                                        <option value="5">Kiên Giang</option>
+                                                                        <option value="6">Đồng Tháp</option>
+                                                                    </select>
+                                                                </div><!-- /.form-group -->
+                                                            </div>
+                                                            <div class="col-md-12">
+
+                                                                <div class="form-group">
+                                                                    <label for="ngaysinh-modal">Ngày sinh:</label>
+                                                                    <input type="date" class="form-control"
+                                                                           id="ngaysinh-modal">
+                                                                </div><!-- /.form-group -->
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <!--End container-fluid-->
+
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                                        Hủy
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary">Lưu</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="my-properties">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>Tên khách</th>
+                                                    <th>CMND/CCCD</th>
+                                                    <th>Quê quán</th>
+                                                    <th>Ngày sinh</th>
+                                                    <th>Thao tác</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="inner">
+                                                            <a th:href="@{#}"><h2>Trần Thanh Trung</h2>
+                                                            </a>
+
+
+                                                        </div>
+                                                    </td>
+                                                    <td>092093001582</td>
+                                                    <td>Vĩnh Long</td>
+                                                    <td>31/09/1992</td>
+                                                    <td class="actions">
+                                                        <a href="#" class="edit"><i class="fa fa-pencil"></i>Sửa</a>
+                                                        <a href="#"><i class="delete fa fa-trash-o"></i></a>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!-- /.table-responsive -->
+                                        <!-- Pagination -->
+                                        <div class="center">
+                                            <ul class="pagination">
+                                                <li class="active"><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#">5</a></li>
+                                            </ul><!-- /.pagination-->
+                                        </div><!-- /.center-->
+                                    </div><!-- /.my-properties -->
+
+                                </div>
+                                <!--End table of phong tro-->
+                            </div>
+
+                        </div>
+                        <!--End Khach tro-->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <!-- end Page Content -->
+</div>
+</body>
+</html>

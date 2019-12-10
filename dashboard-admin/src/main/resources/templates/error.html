@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+<head>
+    <title>Oops 404 for Website Template for free | 404Pagefree.com</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="//fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/error/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
+</head>
+<body>
+<div class="wrap">
+    <div class="logo">
+        <p>OOPS! - Could not Find it</p>
+        <img th:src="@{/error/images/404-1.png}"/>
+        <div class="sub">
+            <p><a th:href="@{/admin/home}">Back </a></p>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    &copy;
+    <script type="text/javascript">
+        document.write(new Date().getFullYear());
+    </script>
+    All Rights Reserved</a>
+</div>
+</body>
+</html>

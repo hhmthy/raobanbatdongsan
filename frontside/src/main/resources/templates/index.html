@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{includes/main-layout}">
+<head>
+    <title>Trang chủ</title>
+</head>
+<body>
+
+<!-- Slider -->
+<div layout:fragment="slider" th:replace="/includes/slider :: slider">
+    <!--<th:block th:replace="/includes/slider :: slider"></th:block>-->
+</div>
+<!-- end Slider -->
+
+<!-- Search Box -->
+<div layout:fragment="searchbox">
+    <th:block th:replace="/includes/searchbox :: searchbox"></th:block>
+</div>
+<!-- end Search Box -->
+
+<div layout:fragment="page-content">
+    <div id="page-content">
+        <section id="our-services" class="block">
+            <div class="container">
+                <header class="section-title"><h2>Dịch vụ của chúng tôi</h2></header>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="feature-box equal-height">
+                            <figure class="icon"><i class="fa fa-folder"></i></figure>
+                            <aside class="description">
+                                <header><h3><a th:href="@{/submit-property}">Đăng tin mua bán BĐS</a></h3></header>
+                                <p>Trang <a th:href="@{/}"><strong>fastland.vn</strong></a> là trang web rất hữu ích và
+                                    tiện lợi giúp bạn đăng tin bán đất miễn phí, tiếp cận hàng triệu người xem. Mỗi tin
+                                    đăng được duyệt nhanh chóng, mang đến trải nghiệm mua và bán tuyệt vời cho khách
+                                    hàng. Với giao diện thông minh, công cụ dễ sử dụng, ai ai cũng có thể đăng tin rao
+                                    bán bất động sản, rao vặt, mua sắm nhanh chóng và hoàn toàn miễn phí.</p>
+                            </aside>
+                        </div><!-- /.feature-box -->
+                    </div><!-- /.col-md-4 -->
+                    <div class="col-md-4 col-sm-4">
+                        <div class="feature-box equal-height">
+                            <figure class="icon"><i class="fa fa-users"></i></figure>
+                            <aside class="description">
+                                <header><h3><a th:href="@{/news}">Cung cấp tin tức BĐS</a></h3></header>
+                                <p>Trang <a th:href="@{/}"><strong>fastland.vn</strong></a> là trang web chuyên cung cấp
+                                    tin tức bất động sản thành phố Hồ Chí Minh, Cần Thơ, Hà Nội và các tỉnh khác trên cả
+                                    nước nhanh chóng chính xác. Giúp các nhà đầu tư nhà đất, bất động sản một cách hợp
+                                    lý.</p>
+                            </aside>
+                        </div><!-- /.feature-box -->
+                    </div><!-- /.col-md-4 -->
+                    <div class="col-md-4 col-sm-4">
+                        <div class="feature-box equal-height">
+                            <figure class="icon"><i class="fa fa-money"></i></figure>
+                            <aside class="description">
+                                <header><h3><a th:href="@{/}">Hỗ trợ quản lý cho thuê</a></h3></header>
+                                <p>Nếu bạn đang có nhu cầu mua hoặc đang sở hữu một bất động sản "mua lại để cho thuê",
+                                    <a th:href="@{/}"><strong>fastland.vn</strong></a> có các chuyên gia để tư vấn và hỗ
+                                    trợ bạn. Đội ngũ quản lý và cho thuê luôn sẵn lòng hỗ trợ trong các dịch vụ định
+                                    giá, tư vấn hoạt động tài chính, thuế, bảo hiểm nhà đất cho các tòa nhà và hỗ trợ
+                                    dịch vụ bán lại bất động sản nếu khách hàng có nhu cầu.</p>
+                            </aside>
+                        </div><!-- /.feature-box -->
+                    </div><!-- /.col-md-4 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /#our-services -->
+        <section id="price-drop" class="block">
+            <div class="container">
+                <header class="section-title">
+                    <h2>Tin đăng mới nhất</h2>
+                    <a href="properties-listing.html" class="link-arrow">Xem tất cả</a>
+                </header>
+                <div class="row">
+                    <div class="col-md-3 col-sm-6" th:each="itemNewestPost, itemId : ${listNewestFinal}">
+                        <div class="property">
+                            <a th:href="@{/property-detail/{catalog}/{id}(catalog=${itemNewestPost.value.catalog == 'house'} ? 'house' : 'land', id=${itemNewestPost.key})}">
+                                <div class="property-image">
+                                    <img alt="" src="/assets/img/properties/property-06.jpg">
+                                </div>
+                                <div class="overlay">
+                                    <div class="info">
+                                        <div class="tag price" th:utext="${itemNewestPost.value.price} + ' VNĐ'"></div>
+                                        <h3 th:utext="${itemNewestPost.value.title}"></h3>
+                                        <figure th:utext="${itemNewestPost.value.city} + ', ' + ${itemNewestPost.value.district}"></figure>
+                                    </div>
+                                    <ul class="additional-info">
+                                        <li>
+                                            <header>Diện tích:</header>
+                                            <figure>860m<sup>2</sup></figure>
+                                        </li>
+                                        <li>
+                                            <header>Phòng ngủ:</header>
+                                            <figure>3</figure>
+                                        </li>
+                                        <li>
+                                            <header>Phòng tắm:</header>
+                                            <figure>2</figure>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </a>
+                        </div><!-- /.property -->
+                    </div><!-- /.col-md-3 -->
+                </div><!-- /.row-->
+            </div><!-- /.container -->
+        </section><!-- /#price-drop -->
+        <section id="new-properties" class="block">
+            <div class="container">
+                <header class="section-title">
+                    <h2>Tin đăng nổi bật</h2>
+                    <a href="properties-listing.html" class="link-arrow">Xem tất cả</a>
+                </header>
+                <div class="row">
+                    <div class="col-md-3 col-sm-6" th:each="itemFeaturePost : ${listFeatureFinal}">
+                        <div class="property">
+                            <a th:href="@{/property-detail/{catalog}/{id}(catalog=${itemFeaturePost.value.catalog == 'house'} ? 'house' : 'land', id=${itemFeaturePost.key})}">
+                                <div class="property-image">
+                                    <img alt="" src="/assets/img/properties/property-06.jpg">
+                                </div>
+                                <div class="overlay">
+                                    <div class="info">
+                                        <div class="tag price" th:utext="${itemFeaturePost.value.price} + ' VNĐ'"></div>
+                                        <h3 th:utext="${itemFeaturePost.value.title}"></h3>
+                                        <figure th:utext="${itemFeaturePost.value.city} + ', ' + ${itemFeaturePost.value.district}"></figure>
+                                    </div>
+                                    <ul class="additional-info">
+                                        <li>
+                                            <header>Diện tích:</header>
+                                            <figure>860m<sup>2</sup></figure>
+                                        </li>
+                                        <li>
+                                            <header>Phòng ngủ:</header>
+                                            <figure>3</figure>
+                                        </li>
+                                        <li>
+                                            <header>Phòng tắm:</header>
+                                            <figure>2</figure>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </a>
+                        </div><!-- /.property -->
+                    </div><!-- /.col-md-3 -->
+                </div><!-- /.row-->
+
+            </div><!-- /.container-->
+        </section><!-- /#new-properties-->
+    </div>
+</div>
+
+</body>
+</html>

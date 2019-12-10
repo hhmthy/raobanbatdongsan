@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{includes/main-layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Tin đăng của tôi</title>
+</head>
+<body class="page-sub-page page-my-properties page-account" id="page-top">
+<div layout:fragment="page-content">
+    <!-- Page Content -->
+    <div id="page-content">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#">Tài khoản</a></li>
+                <li class="active">Tin đăng của tôi</li>
+            </ol>
+        </div>
+        <!-- end Breadcrumb -->
+
+        <div class="container">
+            <div class="row">
+                <!-- sidebar -->
+                <div class="col-md-3 col-sm-2">
+                    <section id="sidebar">
+                        <header><h3>Account</h3></header>
+                        <aside>
+                            <ul class="sidebar-navigation">
+                                <li><a th:href="@{/profile}"><i
+                                        class="fa fa-user"></i><span>Thông tin cá nhân</span></a></li>
+                                <li class="active"><a th:href="@{/my-property}"><i class="fa fa-home"></i><span>Tin đăng của tôi</span></a>
+                                </li>
+                                <li><a th:href="@{/bookmarked}"><i
+                                        class="fa fa-heart"></i><span>Tin yêu thích</span></a></li>
+                            </ul>
+                        </aside>
+                    </section><!-- /#sidebar -->
+                </div><!-- /.col-md-3 -->
+                <!-- end Sidebar -->
+                <!-- My Properties -->
+                <div class="col-md-9 col-sm-10">
+                    <section id="my-properties">
+                        <header><h1>Tin đăng của tôi</h1></header>
+                        <div class="my-properties">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Tin</th>
+                                        <th></th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="item : ${listPostCataByUserId}">
+                                        <td class="image">
+                                            <a th:href="@{/property-detail/house/{id}(id=${item.post_id})house}"><img
+                                                    alt=""
+                                                    src="assets/img/properties/property-04.jpg"></a>
+                                        </td>
+                                        <td>
+                                            <div class="inner">
+                                                <a th:href="@{/property-detail/house/{id}(id=${item.post_id})}"><h2
+                                                        th:utext="${item.title}"></h2></a>
+                                                <figure th:utext="${item.city} + ', ' + ${item.district}"></figure>
+                                                <div class="tag price" th:utext="${item.price}"></div>
+                                            </div>
+                                        </td>
+                                        <td class="actions">
+                                            <a href="#" class="edit"><i class="fa fa-pencil"></i>Sửa</a>
+                                            <a href="#"><i class="delete fa fa-trash-o"></i></a>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div><!-- /.table-responsive -->
+                            <!-- Pagination -->
+                            <div class="center">
+                                <ul class="pagination">
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                </ul><!-- /.pagination-->
+                            </div><!-- /.center-->
+                        </div><!-- /.my-properties -->
+                    </section><!-- /#my-properties -->
+                </div><!-- /.col-md-9 -->
+                <!-- end My Properties -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div>
+    <!-- end Page Content -->
+</div>
+</body>
+</html>

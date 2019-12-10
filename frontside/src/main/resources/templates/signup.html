@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{includes/main-layout}">
+<head>
+    <title>Đăng ký</title>
+</head>
+<body class="page-sub-page page-create-account page-account" id="page-top">
+
+<div layout:fragment="page-content">
+    <!-- Page Content -->
+    <div id="page-content">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a th:href="@{/}">Trang chủ</a></li>
+                <li class="active">Đăng ký</li>
+            </ol>
+        </div>
+        <!-- end Breadcrumb -->
+
+        <div class="container">
+            <header><h1>Đăng ký tài khoản</h1></header>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+                    <form role="form" id="form-create-account" th:object="${signupForm}"
+                          method="post" th:action="@{/signup}">
+                        <div class="form-group">
+                            <label for="firstName">Họ:</label>
+                            <input type="text" class="form-control" id="firstName" required
+                                   oninvalid="this.setCustomValidity('Nhập vào họ')"
+                                   oninput="this.setCustomValidity('')" th:field="*{firstName}">
+                            <span class="text-danger" th:if="${#fields.hasErrors('firstName')}"
+                                  th:errors="*{firstName}"></span>
+                        </div><!-- /.form-group -->
+                        <div class="form-group">
+                            <label for="lastName">Tên:</label>
+                            <input type="text" class="form-control" id="lastName" required
+                                   oninvalid="this.setCustomValidity('Nhập vào tên')"
+                                   oninput="this.setCustomValidity('')" th:field="*{lastName}">
+                            <span class="text-danger" th:if="${#fields.hasErrors('lastName')}"
+                                  th:errors="*{lastName}"></span>
+                        </div><!-- /.form-group -->
+                        <div class="form-group">
+                            <label for="username">Tên tài khoản:</label>
+                            <input type="text" class="form-control" id="username" required
+                                   oninvalid="this.setCustomValidity('Nhập vào tên tài khoản')"
+                                   oninput="this.setCustomValidity('')" th:field="*{username}">
+                            <span class="text-danger" th:if="${#fields.hasErrors('username')}"
+                                  th:errors="*{username}"></span>
+                        </div><!-- /.form-group -->
+                        <div class="form-group">
+                            <label for="username">Giới tính:</label>&nbsp&nbsp&nbsp&nbsp&nbsp
+                            <span th:each="gender : ${genders}" th:field="*{gender}">
+                                <input type="radio" name="gender" th:value="${gender}" th:checked="${gender == 'Nam'}"/>
+                                <label th:text="${gender}"></label>
+                                &nbsp&nbsp&nbsp&nbsp
+                            </span>
+                            <span class="text-danger" th:if="${#fields.hasErrors('gender')}"
+                                  th:errors="*{gender}"></span>
+                        </div><!-- /.form-group -->
+                        <div class="form-group">
+                            <label for="birthday">Ngày sinh:</label>
+                            <input type="date" class="form-control" id="birthday" th:field="*{birthday}">
+                            <span class="text-danger" th:if="${#fields.hasErrors('birthday')}"
+                                  th:errors="*{birthday}"></span>
+                        </div><!-- /.form-group -->
+                        <div class="form-group">
+                            <label for="phoneNumber">Số điện thoại:</label>
+                            <input type="text" class="form-control" id="phoneNumber" required
+                                   oninvalid="this.setCustomValidity('Nhập vào số điện thoại')"
+                                   oninput="this.setCustomValidity('')" th:field="*{phoneNumber}">
+                            <span class="text-danger" th:if="${#fields.hasErrors('phoneNumber')}"
+                                  th:errors="*{phoneNumber}"></span>
+                        </div><!-- /.form-group -->
+                        <div class="form-group">
+                            <label for="address">Địa chỉ:</label>
+                            <input type="text" class="form-control" id="address" required
+                                   oninvalid="this.setCustomValidity('Nhập vào tên địa chỉ')"
+                                   oninput="this.setCustomValidity('')" th:field="*{address}">
+                            <span class="text-danger" th:if="${#fields.hasErrors('address')}"
+                                  th:errors="*{address}"></span>
+                        </div><!-- /.form-group -->
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="text" class="form-control" id="email" required
+                                   oninvalid="this.setCustomValidity('Nhập vào địa chỉ email')"
+                                   oninput="this.setCustomValidity('')" th:field="*{email}">
+                            <span class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                        </div><!-- /.form-group -->
+                        <div class="form-group">
+                            <label for="password">Mật khẩu:</label>
+                            <input type="password" class="form-control" id="password" required
+                                   oninvalid="this.setCustomValidity('Nhập vào mật khẩu')"
+                                   oninput="this.setCustomValidity('')" th:field="*{password}">
+                            <span class="text-danger" th:if="${#fields.hasErrors('password')}"
+                                  th:errors="*{password}"></span>
+                        </div><!-- /.form-group -->
+                        <div class="form-group">
+                            <label for="rePassword">Xác nhận mật khẩu:</label>
+                            <input type="password" class="form-control" id="rePassword" required
+                                   oninvalid="this.setCustomValidity('Nhập vào mật khẩu lần nữa')"
+                                   oninput="this.setCustomValidity('')" th:field="*{rePassword}">
+                            <span class="text-danger" th:if="${#fields.hasErrors('rePassword')}"
+                                  th:errors="*{rePassword}"></span>
+                            <span class="text-danger" th:if="${errorMessage}" th:utext="${errorMessage}"></span>
+                        </div><!-- /.form-group -->
+                        <div class="form-group clearfix">
+                            <button type="submit" class="btn pull-right btn-default" id="account-submit">Đăng ký
+                            </button>
+                        </div><!-- /.form-group -->
+                    </form>
+                </div>
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div>
+    <!-- end Page Content -->
+</div>
+
+</body>
+</html>

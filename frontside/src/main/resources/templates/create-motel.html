@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{includes/main-layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo khu trọ</title>
+
+</head>
+<body class="page-sub-page page-submit" id="page-top">
+
+<div layout:fragment="page-content">
+    <!-- Page Content -->
+    <div id="page-content">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="#">Trang chủ</a></li>
+                <li class="active">Tạo khu trọ</li>
+            </ol>
+        </div>
+        <!-- end Breadcrumb -->
+
+        <div class="container">
+            <header><h1>Tạo khu trọ</h1></header>
+
+            <form role="form" id="form-submit" class="form-submit" action="thank-you.html">
+                <div class="row">
+                    <div class="block">
+                        <div class="col-md-9 col-sm-9">
+                            <section id="submit-form">
+                                <section id="basic-information">
+                                    <header><h2>Thông tin cơ bản</h2></header>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="submit-title">Tiêu đề</label>
+                                                <input type="text" class="form-control" id="submit-title" name="title"
+                                                       required>
+                                            </div><!-- /.form-group -->
+                                        </div>
+
+                                    </div> <!--End row-->
+                                    <div class="form-group">
+                                        <label for="submit-description">Mô tả</label>
+                                        <textarea class="form-control" id="submit-description" rows="8"
+                                                  name="submit-description" required></textarea>
+                                    </div><!-- /.form-group -->
+
+
+                                    <section class="block">
+                                        <header><h2>Địa chỉ</h2></header>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="input-address">Số nhà/Tên đường</label>
+                                                    <input placeholder="Nhập số nhà và tên đường" type="text"
+                                                           class="form-control" id="input-address" name="address"
+                                                           required>
+                                                </div><!-- /.form-group -->
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="input-city">Tỉnh/Thành Phố</label>
+                                                    <select name="type" id="input-city">
+                                                        <option value="1">Cần Thơ</option>
+                                                        <option value="2">Vĩnh Long</option>
+                                                        <option value="3">Sóc Trăng</option>
+                                                        <option value="4">Bạc Liêu</option>
+                                                        <option value="5">Cà Mau</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="input-district">Quận/Huyện</label>
+                                                    <select name="type" id="input-district">
+                                                        <option value="1">Ninh Kiều</option>
+                                                        <option value="2">Cái Răng</option>
+                                                        <option value="3">Ô Môn</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="input-phuong">Phường/Xã</label>
+                                                    <select name="type" id="input-phuong">
+                                                        <option value="1">Hưng Lợi</option>
+                                                        <option value="2">An Khánh</option>
+                                                        <option value="3">Xuân Khánh</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </section> <!--End section address-->
+
+                                    <section class="block" id="gallery">
+                                        <header><h2>Thêm ảnh</h2></header>
+                                        <div class="center">
+                                            <div class="form-group">
+                                                <input id="file-upload" type="file" class="file" multiple="true"
+                                                       data-show-upload="false" data-show-caption="false"
+                                                       data-show-remove="false" accept="image/jpeg,image/png"
+                                                       data-browse-class="btn btn-default"
+                                                       data-browse-label="Chọn ảnh từ máy tính">
+                                                <figure class="note"><strong>Mẹo:</strong> Bạn có thể tải lên nhiều ảnh
+                                                    cùng một lúc!
+                                                </figure>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                </section><!-- /#basic-information -->
+
+                                <hr>
+                            </section>
+                        </div><!-- /.col-md-9 -->
+                        <div class="col-md-3 col-sm-3">
+                            <aside class="submit-step">
+                                <figure class="step-number">1</figure>
+                                <div class="description">
+                                    <h4>Thông tin cơ bản</h4>
+                                    <p>Vui lòng nhập đầy đủ thông tin cơ bản.
+                                    </p>
+                                </div>
+                            </aside><!-- /.submit-step -->
+                        </div><!-- /.col-md-3 -->
+                    </div>
+                </div><!-- /.row -->
+
+                <div class="row">
+                    <div class="block">
+                        <div class="col-md-9 col-sm-9">
+                            <section>
+                                <header><h2>Thông tin chi tiết khu trọ</h2></header>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="submit-pricebymonth">Giá tháng</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="submit-pricebymonth"
+                                                       name="pricebymonth" pattern="\d*" required>
+                                                <span class="input-group-addon">VNĐ</span>
+                                            </div>
+                                        </div><!-- /.form-group -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="submit-pricebyday">Giá ngày</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="submit-pricebyday"
+                                                       name="pricebyday" pattern="\d*" required>
+                                                <span class="input-group-addon">VNĐ</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="submit-area">Diện tích</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="submit-area" name="area"
+                                                       pattern="\d*" required="">
+                                                <span class="input-group-addon">m<sup>2</sup></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="submit-vschungorrieng">Nhà vệ sinh:</label>
+                                            <select name="type" id="submit-vschungorrieng">
+                                                <option value="1">Chung</option>
+                                                <option value="2">Riêng</option>
+                                            </select>
+                                        </div><!-- /.form-group -->
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="submit-numofroom">Số phòng</label>
+                                            <input type="text" class="form-control" id="submit-numofroom"
+                                                   name="numofroom"
+                                                   pattern="\d*" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="submit-numoffloor">Số tầng:</label>
+                                            <input type="text" class="form-control" id="submit-numoffloor"
+                                                   name="numoffloor"
+                                                   pattern="\d*" required="">
+                                        </div><!-- /.form-group -->
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="submit-certification">Giấy tờ pháp lý</label>
+                                            <input type="text" class="form-control" id="submit-certification"
+                                                   name="certification" required>
+                                        </div><!-- /.form-group -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="submit-direction">Hướng</label>
+                                            <input type="text" class="form-control" id="submit-direction"
+                                                   name="direction" required>
+                                        </div><!-- /.form-group -->
+                                    </div>
+                                </div>
+
+
+                                <hr style="margin-top: 50px;">
+                            </section>
+                            <!--End thông tin chi tiết khu trọ-->
+
+                            <section id="property-features" class="block">
+                                <section>
+                                    <header><h2>Dịch vụ và tiện ích</h2></header>
+                                    <ul class="submit-features">
+                                        <li>
+                                            <div class="checkbox"><label>
+                                                <div class="icheckbox"><input type="checkbox"
+                                                                              style="position: absolute; opacity: 0;">
+                                                    <ins class="iCheck-helper"
+                                                         style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                                                </div>
+                                                Wifi</label></div>
+                                        </li>
+                                        <li>
+                                            <div class="checkbox"><label>
+                                                <div class="icheckbox"><input type="checkbox"
+                                                                              style="position: absolute; opacity: 0;">
+                                                    <ins class="iCheck-helper"
+                                                         style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                                                </div>
+                                                Camera an ninh</label></div>
+                                        </li>
+                                        <li>
+                                            <div class="checkbox"><label>
+                                                <div class="icheckbox"><input type="checkbox"
+                                                                              style="position: absolute; opacity: 0;">
+                                                    <ins class="iCheck-helper"
+                                                         style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                                                </div>
+                                                Giặt ủi</label></div>
+                                        </li>
+                                        <li>
+                                            <div class="checkbox"><label>
+                                                <div class="icheckbox"><input type="checkbox"
+                                                                              style="position: absolute; opacity: 0;">
+                                                    <ins class="iCheck-helper"
+                                                         style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                                                </div>
+                                                Nhà xe</label></div>
+                                        </li>
+                                        <li>
+                                            <div class="checkbox"><label>
+                                                <div class="icheckbox"><input type="checkbox"
+                                                                              style="position: absolute; opacity: 0;">
+                                                    <ins class="iCheck-helper"
+                                                         style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                                                </div>
+                                                Máy điều hòa</label></div>
+                                        </li>
+                                        <li>
+                                            <div class="checkbox"><label>
+                                                <div class="icheckbox"><input type="checkbox"
+                                                                              style="position: absolute; opacity: 0;">
+                                                    <ins class="iCheck-helper"
+                                                         style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                                                </div>
+                                                Tủ lạnh</label></div>
+                                        </li>
+                                    </ul>
+                                </section>
+
+                                <hr style="margin-top: 50px;">
+                            </section>
+
+
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <aside class="submit-step">
+                                <figure class="step-number">2</figure>
+                                <div class="description">
+                                    <h4>Thông tin chi tiết khu trọ</h4>
+                                    <p>Vui lòng nhập đầy đủ thông tin chi tiết về khu trọ cần quản lý.
+                                    </p>
+                                </div>
+                            </aside><!-- /.submit-step -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="block">
+                        <div class="col-md-9 col-sm-9">
+                            <div class="center">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-default large">TẠO KHU TRỌ</button>
+                                </div><!-- /.form-group -->
+                                <figure class="note block">Khi bấm TẠO KHU TRỌ, bạn vui lòng đọc kĩ điều khoản tại <a
+                                        href="terms-conditions.html">Điều khoản</a></figure>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <aside class="submit-step">
+                                <figure class="step-number">3</figure>
+                                <div class="description">
+                                    <h4>Xem lại thông tin và đọc kỹ điều khoản</h4>
+                                    <p>Vui lòng xem lại thông tin đã nhập và đọc kĩ các điều khoản, điều kiện của chúng
+                                        tôi.
+                                    </p>
+                                </div>
+                            </aside><!-- /.submit-step -->
+                        </div><!-- /.col-md-3 -->
+                    </div>
+                </div>
+            </form><!-- /#form-submit -->
+        </div><!-- /.container -->
+    </div>
+    <!-- end Page Content -->
+</div>
+
+</body>
+</html>

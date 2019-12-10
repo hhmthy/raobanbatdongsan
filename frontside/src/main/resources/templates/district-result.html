@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+</head>
+<body>
+<select name="district" th:fragment="district-result">
+    <option value="">Quận/Huyện</option>
+    <option th:each="district : ${districts}" th:value="*{district.id}" th:utext="*{district.name}"/>
+</select>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{includes/main-layout}">
+<head>
+    <title>Đăng bài thành công</title>
+</head>
+<body class="page-sub-page page-sign-in page-account" id="page-top">
+
+<div layout:fragment="page-content">
+    <!-- Page Content -->
+    <div id="page-content">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <heade><h1 class="h1 center">Đăng bài thành công!</h1></heade>
+            <div class="row">
+                <div class="col-md-12 center">
+                    <a th:action="@{/}">
+                        <button class="btn-default btn-lg">TRỞ VỀ</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- end Breadcrumb -->
+    </div>
+    <!-- end Page Content -->
+</div>
+
+</body>
+</html>

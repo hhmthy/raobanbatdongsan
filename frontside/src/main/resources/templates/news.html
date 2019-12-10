@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/includes/main-layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Tin tức</title>
+</head>
+<body class="page-sub-page page-blog-listing" id="page-top">
+<div layout:fragment="page-content">
+    <!-- Page Content -->
+    <div class="page-content">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="#">Trang chủ</a></li>
+                <li class="active">Tin tức</li>
+            </ol>
+        </div>
+        <!-- end Breadcrumb -->
+        <div class="container">
+            <div class="row">
+                <!-- Content -->
+                <div class="col-md-9 col-sm-9">
+                    <section id="content">
+                        <header><h1>Tin tức</h1></header>
+                        <article class="blog-post">
+                            <a th:href="@{/news-detail}"><img src="assets/img/properties/property-detail-02.jpg"></a>
+                            <header><a th:href="@{/news-detail}"><h2>Mỹ: Triệu đô không mua nổi nhà 100m2 tại San
+                                Francisco</h2></a></header>
+                            <figure class="meta">
+                                <a href="#" class="link-icon"><i class="fa fa-user"></i>Admin</a>
+                                <a href="#" class="link-icon"><i class="fa fa-calendar"></i>30/10/2019</a>
+                                <div class="tags">
+                                    <a href="#" class="tag article">Kiến trúc</a>
+                                    <a href="#" class="tag article">Bất động sản</a>
+                                    <a href="#" class="tag article">Xu thế</a>
+                                </div>
+                            </figure>
+                            <p>Một phân tích mới của trang web niêm yết bất động sản Zillow cho thấy, tại Mỹ, những căn
+                                nhà ở một gia đình sẽ rộng khoảng 204m2, 4 phòng ngủ và hai phòng tắm rưỡi có giá hàng
+                                triệu USD.
+                            </p>
+                            <a th:href="@{/news-detail}" class="link-arrow">Chi tiết</a>
+                        </article><!-- /.blog-post -->
+
+                        <article class="blog-post">
+                            <a th:href="@{/news-detail}"><img src="assets/img/properties/property-detail-02.jpg"></a>
+                            <header><a th:href="@{/news-detail}"><h2>Mỹ: Triệu đô không mua nổi nhà 100m2 tại San
+                                Francisco</h2></a></header>
+                            <figure class="meta">
+                                <a href="#" class="link-icon"><i class="fa fa-user"></i>Admin</a>
+                                <a href="#" class="link-icon"><i class="fa fa-calendar"></i>30/10/2019</a>
+                                <div class="tags">
+                                    <a href="#" class="tag article">Kiến trúc</a>
+                                    <a href="#" class="tag article">Bất động sản</a>
+                                    <a href="#" class="tag article">Xu thế</a>
+                                </div>
+                            </figure>
+                            <p>Một phân tích mới của trang web niêm yết bất động sản Zillow cho thấy, tại Mỹ, những căn
+                                nhà ở một gia đình sẽ rộng khoảng 204m2, 4 phòng ngủ và hai phòng tắm rưỡi có giá hàng
+                                triệu USD.
+                            </p>
+                            <a th:href="@{/news-detail}" class="link-arrow">Chi tiết</a>
+                        </article><!-- /.blog-post -->
+                        <!-- Pagination -->
+                        <div class="center">
+                            <ul class="pagination">
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                            </ul><!-- /.pagination-->
+                        </div><!-- /.center-->
+                    </section><!-- /#content -->
+                </div><!-- /.col-md-9 -->
+                <!-- end Content -->
+
+                <!-- sidebar -->
+                <div class="col-md-3 col-sm-3">
+                    <section id="sidebar">
+
+                        <div th:replace="/includes/search :: search"></div>
+                        <aside id="post-archive">
+                            <header><h3>Tin theo thời gian</h3></header>
+                            <ul class="list-links">
+                                <li><a href="#">Tháng 12 2019</a></li>
+                                <li><a href="#">Tháng 11 2019</a></li>
+                                <li><a href="#">Tháng 10 2019</a></li>
+                                <li><a href="#">Tháng 9 2019</a></li>
+                                <li><a href="#">Tháng 8 2019</a></li>
+                                <li><a href="#">Tháng 7 2019</a></li>
+                                <li><a href="#">Tháng 6 2019</a></li>
+                            </ul>
+                        </aside><!-- /#post-archive -->
+                        <aside id="categories">
+                            <header><h3>Danh mục tin</h3></header>
+                            <ul class="list-links">
+                                <li><a href="#">Kiến trúc</a></li>
+                                <li><a href="#">Thị trường BĐS</a></li>
+                                <li><a href="#">Mẫu nhà đẹp</a></li>
+                            </ul>
+                        </aside><!-- /#categories -->
+                    </section><!-- /#sidebar -->
+                </div><!-- /.col-md-3 -->
+                <!-- end Sidebar -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div>
+    <!-- end Page Content -->
+</div>
+</body>
+</html>

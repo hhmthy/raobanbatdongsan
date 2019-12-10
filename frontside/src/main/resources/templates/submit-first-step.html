@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{includes/main-layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng tin BĐS</title>
+</head>
+<body class="page-sub-page page-submission-success" id="page-top">
+<div layout:fragment="page-content">
+    <!-- Page Content -->
+    <div id="page-content">
+
+        <!-- Breadcrumb -->
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="#">Trang chủ</a></li>
+                <li class="active">Đăng tin</li>
+            </ol>
+        </div>
+        <!-- end Breadcrumb -->
+
+        <div class="container">
+            <header>
+                <h1>Tạo tin cần đăng</h1>
+            </header>
+            <div class="row">
+
+                <form role="form" id="form-create-news-property" method="post" th:action="@{/create-property}"
+                      th:object="${typeofcreate}">
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="news-type">Loại tin</label>
+                            <select name="news-type" id="news-type" th:field="*{typeOfPost}">
+                                <option th:value="1">Bán</option>
+                                <option th:value="2">Cho thuê</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="property-type">Loại BĐS</label>
+                            <select name="property-type" id="property-type" th:field="*{typeOfRe}">
+                                <option th:value="1">Căn hộ</option>
+                                <option th:value="2">Đất</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="padding-top:1.4%;">
+                        <div class="form-group">
+                            <button type="submit"
+                                    class="btn btn-default large"
+                                    style="width:100%; height:100%">
+                                Tiến hành tạo tin
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+        <!-- end Breadcrumb -->
+
+    </div>
+    <!-- end Page Content -->
+</div>
+</body>
+</html>

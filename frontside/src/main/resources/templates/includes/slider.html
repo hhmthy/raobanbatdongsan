@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragment</title>
+</head>
+<body>
+
+<div th:fragment="slider" id="slider" class="loading has-parallax">
+    <div id="loading-icon"><i class="fa fa-cog fa-spin"></i></div>
+    <div class="owl-carousel homepage-slider carousel-full-width">
+        <div class="slide">
+            <div class="container">
+                <div class="overlay">
+                    <div class="info">
+                        <div class="tag price">5.000.000.000 VNĐ</div>
+                        <h3>123 Nguyễn Văn Linh</h3>
+                        <figure>Quận Ninh Kiều, TP.Cần Thơ</figure>
+                    </div>
+                    <hr>
+                    <a th:href="@{/property-detail}" class="link-arrow">Chi tiết</a>
+                </div>
+            </div>
+            <img alt="" th:src="@{/assets/img/slide-01.jpg}">
+        </div>
+        <div class="slide">
+            <div class="container">
+                <div class="overlay">
+                    <div class="info">
+                        <div class="tag price">1.000.000.000 VNĐ</div>
+                        <h3>987 Trần Phú</h3>
+                        <figure>Quận Ninh Kiều, TP.Cần Thơ</figure>
+                    </div>
+                    <hr>
+                    <a th:href="@{/property-detail}" class="link-arrow">Chi tiết</a>
+                </div>
+            </div>
+            <img alt="" th:src="@{/assets/img/slide-02.jpg}">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{includes/main-layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo tin BĐS</title>
+
+</head>
+<body class="page-sub-page page-submit" id="page-top">
+
+<div layout:fragment="page-content">
+    <!-- Page Content -->
+    <div id="page-content">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="#">Trang chủ</a></li>
+                <li class="active">Tạo tin BĐS</li>
+            </ol>
+        </div>
+        <!-- end Breadcrumb -->
+
+        <div class="container">
+            <header><h1>Tạo tin BĐS</h1></header>
+
+            <form role="form" id="form-submit" class="form-submit" th:object="${objPostHouse}"
+                  method="post" th:action="@{/proccessPostSaleHouse}">
+                <input type="hidden" id="user_id" name="user_id" th:value="${session.user_id}"/>
+                <input type="hidden" id="catalog" name="catalog" th:value="house"/>
+                <div class="row">
+                    <div class="block">
+                        <div class="col-md-9 col-sm-9">
+                            <section id="submit-form">
+                                <section id="basic-information">
+                                    <header><h2>Thông tin cơ bản</h2></header>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="submit-title">Tiêu đề</label>
+                                                <input type="text" class="form-control" id="submit-title" name="title"
+                                                       required>
+                                            </div><!-- /.form-group -->
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="submit-price">Giá</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="price"
+                                                           id="submit-price" pattern="\d*" required>
+                                                    <span class="input-group-addon">VNĐ</span>
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="submit-area">Diện tích</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" id="submit-area" name="area"
+                                                           pattern="\d*" required="">
+                                                    <span class="input-group-addon">m<sup>2</sup></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!--End row-->
+                                    <div class="form-group">
+                                        <label for="submit-description">Mô tả</label>
+                                        <textarea class="form-control" id="submit-description" rows="8" name="content"
+                                                  required></textarea>
+                                    </div><!-- /.form-group -->
+
+
+                                    <section class="block">
+                                        <header><h2>Địa chỉ</h2></header>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="input-address">Số nhà/Tên đường</label>
+                                                    <input placeholder="Nhập số nhà và tên đường" type="text"
+                                                           class="form-control" id="input-address" name="address"
+                                                           required>
+                                                </div><!-- /.form-group -->
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Tỉnh/Thành Phố</label>
+                                                    <select name="city" onchange="getDistrict(this.value);">
+                                                        <option value="">Tỉnh/Thành phố</option>
+                                                        <option th:each="province : ${provinces}"
+                                                                th:value="${province.id}" th:utext="${province.name}"/>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group" id="district-result">
+                                                    <label>Quận/Huyện</label>
+                                                    <select name="district">
+                                                        <option value="">Quận/Huyện</option>
+                                                        <option th:each="district : ${districts}"
+                                                                th:value="${district.id}" th:utext="${district.name}"/>
+                                                    </select>
+                                                </div><!-- /.form-group -->
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="input-phuong">Phường/Xã</label>
+                                                    <select name="location" id="input-phuong">
+                                                        <option value="1">Hưng Lợi</option>
+                                                        <option value="2">An Khánh</option>
+                                                        <option value="3">Xuân Khánh</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </section> <!--End section address-->
+
+                                    <section class="block" id="gallery">
+                                        <header><h2>Thêm ảnh</h2></header>
+                                        <div class="center">
+                                            <div class="form-group">
+                                                <input id="file-upload" type="file" name="image_url" class="file"
+                                                       multiple="true"
+                                                       data-show-upload="false" data-show-caption="false"
+                                                       data-show-remove="false" accept="image/jpeg,image/png"
+                                                       data-browse-class="btn btn-default"
+                                                       data-browse-label="Chọn ảnh từ máy tính">
+                                                <figure class="note"><strong>Mẹo:</strong> Bạn có thể tải lên nhiều ảnh
+                                                    cùng một lúc!
+                                                </figure>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                </section><!-- /#basic-information -->
+
+                                <hr>
+                            </section>
+                        </div><!-- /.col-md-9 -->
+                        <div class="col-md-3 col-sm-3">
+                            <aside class="submit-step">
+                                <figure class="step-number">1</figure>
+                                <div class="description">
+                                    <h4>Thông tin cơ bản</h4>
+                                    <p>Vui lòng nhập đầy đủ thông tin cơ bản.
+                                    </p>
+                                </div>
+                            </aside><!-- /.submit-step -->
+                        </div><!-- /.col-md-3 -->
+                    </div>
+                </div><!-- /.row -->
+
+                <div class="row">
+                    <div class="block">
+                        <div class="col-md-9 col-sm-9">
+                            <section>
+                                <header><h2>Thông tin chi tiết BĐS</h2></header>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="submit-bedroom">Phòng ngủ</label>
+                                            <input type="text" class="form-control" id="submit-bedroom" name="bedroom"
+                                                   required>
+                                        </div><!-- /.form-group -->
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="submit-restroom">Phòng tắm</label>
+                                            <input type="text" class="form-control" id="submit-restroom" name="restroom"
+                                                   required>
+                                        </div><!-- /.form-group -->
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="submit-floor">Số tầng</label>
+                                            <input type="text" class="form-control" id="submit-floor" name="floor"
+                                                   required>
+                                        </div><!-- /.form-group -->
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="submit-certification">Giấy tờ pháp lý</label>
+                                            <input type="text" class="form-control" id="submit-certification"
+                                                   name="certification" required>
+                                        </div><!-- /.form-group -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="submit-direction">Hướng</label>
+                                            <input type="text" class="form-control" id="submit-direction"
+                                                   name="direction" required>
+                                        </div><!-- /.form-group -->
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="input-level">Loại nhà</label>
+                                            <select name="house_level" id="input-level">
+                                                <option value="1">Nhà cấp 1</option>
+                                                <option value="2">Nhà cấp 2</option>
+                                                <option value="3">Nhà cấp 3</option>
+                                                <option value="4">Nhà cấp 4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="submit-status">Trạng thái ngôi nhà</label>
+                                            <select name="type" id="submit-status">
+                                                <option value="1">Nhà cũ</option>
+                                                <option value="2">Nhà mới</option>
+                                            </select>
+                                        </div><!-- /.form-group -->
+                                    </div>
+                                </div>
+                                <hr style="margin-top: 50px;">
+                            </section>
+
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <aside class="submit-step">
+                                <figure class="step-number">2</figure>
+                                <div class="description">
+                                    <h4>Thông tin chi tiết BĐS</h4>
+                                    <p>Vui lòng nhập đầy đủ thông tin chi tiết BĐS.
+                                    </p>
+                                </div>
+                            </aside><!-- /.submit-step -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="block">
+                        <div class="col-md-9 col-sm-9">
+                            <div class="center">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-default large">ĐĂNG TIN</button>
+                                </div><!-- /.form-group -->
+                                <figure class="note block">Khi bấm ĐĂNG TIN, bạn vui lòng đọc kĩ điều khoản tại
+                                    <a th:href="@{/termsConditions}">Điều khoản đăng tin BĐS</a></figure>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <aside class="submit-step">
+                                <figure class="step-number">3</figure>
+                                <div class="description">
+                                    <h4>Xem lại thông tin và đọc kỹ điều khoản</h4>
+                                    <p>Vui lòng xem lại thông tin đã nhập và đọc kĩ các điều khoản, điều kiện của chúng
+                                        tôi.
+                                    </p>
+                                </div>
+                            </aside><!-- /.submit-step -->
+                        </div><!-- /.col-md-3 -->
+                    </div>
+                </div>
+            </form><!-- /#form-submit -->
+        </div><!-- /.container -->
+    </div>
+    <!-- end Page Content -->
+</div>
+
+</body>
+</html>

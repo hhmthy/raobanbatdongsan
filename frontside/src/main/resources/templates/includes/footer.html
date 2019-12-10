@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragment</title>
+</head>
+<body>
+
+<footer th:fragment="footer" id="page-footer">
+    <div class="inner">
+        <aside id="footer-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <article>
+                            <h3><a th:href="@{/about}">Về chúng tôi</a></h3>
+                            <p>Thành công của chúng tôi là đạt được sự tin tưởng của khách hàng cũng như mối quan hệ bền
+                                chặt với khách hàng. Chúng tôi mong muốn khách hàng như những người bạn thâm giao bền
+                                vững của chúng tôi.
+                            </p>
+                            <hr>
+                            <a href="#" class="link-arrow">Đọc thêm</a>
+                        </article>
+                    </div><!-- /.col-sm-3 -->
+
+                    <div class="col-md-4 col-sm-4">
+                        <article>
+                            <h3>Liên hệ</h3>
+                            <address>
+                                <strong>Trường Đại học Cần Thơ</strong><br>
+                                Đường 3/2, Quận Ninh Kiều<br>
+                                TP.Cần Thơ
+                            </address>
+                            0292 345689<br>
+                            <a href="#">thy@gmail.com</a>
+                        </article>
+                    </div><!-- /.col-sm-3 -->
+                    <div class="col-md-4 col-sm-4">
+                        <article>
+                            <h3>Điều hướng nhanh</h3>
+                            <ul class="list-unstyled list-links">
+                                <li><a th:href="@{/news}">Tin tức</a></li>
+                                <li><a th:href="@{/contact}">Liên hệ</a></li>
+                                <li><a th:if="${session.isEmpty()}" th:href="@{/signin}">Đăng nhập</a></li>
+                                <li><a th:href="@{/property-listing-line}">Tin tức bất động sản</a></li>
+                                <li><a th:href="@{/termsConditions}">Điều khoản</a></li>
+                            </ul>
+                        </article>
+                    </div><!-- /.col-sm-3 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </aside><!-- /#footer-main -->
+        <aside id="footer-thumbnails" class="footer-thumbnails"></aside><!-- /#footer-thumbnails -->
+        <aside id="footer-copyright">
+            <div class="container">
+                <span>Copyright © 2019. All Rights Reserved.</span>
+                <span class="pull-right"><a href="#page-top" class="roll">Go to top</a></span>
+            </div>
+        </aside>
+    </div><!-- /.inner -->
+</footer>
+
+</body>
+</html>
